@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+    <title>Hello Socket.io!</title>
+  </head>
+  <body>
+    <script>
+      const socket = io("ws://localhost:3003");
+      socket.on("connect", () => {
+        // 클라이언트가 소켓연결 성공시
+        socket.send("Hello!"); // 소켓에 "Hello!" 보냄
+      });
+
+      socket.on("message", (data) => {
+        console.log(data);
+      });
+
+      socket.on("customEventName", (data) => {
+        console.log(data);
+      });
+    </script>
+  </body>
+</html>
